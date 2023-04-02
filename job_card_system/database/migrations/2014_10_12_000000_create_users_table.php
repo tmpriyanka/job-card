@@ -19,7 +19,8 @@ return new class extends Migration
 //            $table->string('password');
 
             $table->id();
-            $table->foreign('branch_id')->references('id')->on('branches');
+            $table->foreignIdFor(\App\Models\Branch::class,'branch_id');
+            //$table->foreign('branch_id')->references('id')->on('branches');
             $table->integer('type');
             $table->string('type_name',255);
             $table->string('name',255);

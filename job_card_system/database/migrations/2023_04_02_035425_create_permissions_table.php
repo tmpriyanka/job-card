@@ -14,11 +14,14 @@ return new class extends Migration
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignIdFor(\App\Models\User::class,'user_id');
+            $table->foreignIdFor(\App\Models\Module::class,'module_id');
 
-            $table->integer('module_id')->unsigned();
-            $table->foreign('module_id')->references('id')->on('modules');
+//            $table->integer('user_id')->unsigned();
+//            $table->foreign('user_id')->references('id')->on('users');
+//
+//            $table->integer('module_id')->unsigned();
+//            $table->foreign('module_id')->references('id')->on('modules');
 
             $table->tinyInteger('granted');
             $table->timestamps();
